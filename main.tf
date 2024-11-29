@@ -10,13 +10,13 @@ resource "libvirt_pool" "vm_pool" {
   }
 }
 
-resource "libvirt_volume" "volume" {
-  name   = "${var.pool_name}-qcow"
-  pool   = libvirt_pool.vm_pool.name
-  source = var.os_url
-  format = "qcow2"
-}
 
+resource "libvirt_volume" "volume_disk" {
+  name   = "${var.pool_name}-disk"
+  pool   = libvirt_pool.vm_pool.name
+  # format = "qcow3"
+  size   = var.volume_size
+}
 
 
 resource "libvirt_domain" "vm_domain" {
@@ -42,8 +42,15 @@ resource "libvirt_domain" "vm_domain" {
     target_port = "1"
   }
 
+  disk { #! Main disk where the OS will be installed
+    volume_id = libvirt_volume.volume_disk.id
+  }
+
   disk {
-    volume_id = libvirt_volume.volume.id
+    file = var.iso_path
+  }
+  boot_device {
+    dev = [ "hd", "cdrom"]
   }
 
   graphics {

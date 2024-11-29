@@ -1,7 +1,7 @@
 variable "pool_name" {
   description = "Pool Name"
   type        = string
-  default     = "cluster_kubernetes"
+  default     = "default"
 }
 
 variable "ram_size" {
@@ -24,8 +24,8 @@ variable "libvirt_disk_path" {
   default     = "/opt/kvm/pool1"
 }
 
-variable "os_url" {
-  description = "URL to the IMG file of the OS"
+variable "iso_path" {
+  description = "Path to the ISO file of the OS"
   type        = string
   default     = ""
 }
@@ -59,4 +59,9 @@ variable "libvirt_user" {
   type        = string
   default     = "eliel"
 
+}
+variable "volume_size" {
+  description = "Size of the main volume in GB"
+  type = number
+  default = 1
 }
