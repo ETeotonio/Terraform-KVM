@@ -14,7 +14,6 @@ resource "libvirt_pool" "vm_pool" {
 resource "libvirt_volume" "volume_disk" {
   name   = "${var.pool_name}-disk"
   pool   = libvirt_pool.vm_pool.name
-  # format = "qcow3"
   size   = var.volume_size
 }
 

@@ -61,7 +61,7 @@ variable "libvirt_user" {
 
 }
 variable "volume_size" {
-  description = "Size of the main volume in GB"
+  description = "Size of the main volume in bytes. Described in https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs/resources/volume#size-3"
   type = number
   default = 1
 }
