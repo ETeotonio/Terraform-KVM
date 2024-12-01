@@ -1,4 +1,5 @@
 vm_hostname = "node2"
+pool_name = "node2"
 ram_size = 8192
 cpu_number = 4
 volume_size = 21474836480

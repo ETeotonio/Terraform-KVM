@@ -1,4 +1,5 @@
 vm_hostname = "control_plane"
+pool_name = "control_plane"
 ram_size = 4096
 cpu_number = 2
 volume_size = 21474836480
